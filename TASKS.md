@@ -34,12 +34,13 @@ Projeto Supabase: `greenfield` (ref `ncjqqezzltyetltywbak`, região sa-east-1, o
 - [x] CLI linkada ao projeto (`supabase link`) — 2026-09-16
 - [x] Migration `create_profiles` aplicada no projeto real via `supabase db push` — 2026-09-16
 - [x] Smoke test de ponta a ponta via script Node: signup real criou usuário no Supabase Auth e o trigger populou `public.profiles` corretamente; usuário de teste apagado depois — 2026-09-16
+- [x] Token de acesso temporário revogado no painel do Supabase — 2026-09-16
+- [x] Novo token "legacy" (90 dias) gerado e salvo como variável de ambiente permanente do Windows (`SUPABASE_ACCESS_TOKEN`, escopo usuário) — 2026-09-16, disponível a partir de sessões/terminais abertos depois dessa data
 
 ## Próximos passos
 
 - [ ] Testar visualmente `/login` e `/protected` num navegador de verdade (não foi possível pelo Claude in Chrome neste ambiente — ele não alcança `localhost:3000` desta máquina)
 - [ ] Em Authentication > URL Configuration no painel do Supabase, confirmar que o "Site URL" e o redirect de confirmação de email apontam para `http://localhost:3000/auth/confirm` em dev, e atualizar para o domínio de produção quando houver deploy
-- [ ] Considerar revogar o personal access token "greenfield" usado para criar o projeto (supabase.com/dashboard/account/tokens), se não for reutilizá-lo
 - [ ] Revisar o arquivo solto `prompt greemfield.txt` na raiz (vazio, não versionado — origem incerta, possivelmente sobra de ação no Explorer/OneDrive)
 - [ ] Definir convenção de branches/PRs para os próximos projetos que usarem esta base
 
