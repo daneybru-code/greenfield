@@ -4,7 +4,7 @@ Arquivo de controle do progresso deste projeto. Sempre consultar antes de contin
 
 ## Status atual
 
-Base greenfield criada e commitada (Next.js + TypeScript + Tailwind + Supabase). Supabase CLI inicializada localmente. Nenhum projeto Supabase real ainda foi conectado — `.env.local` ainda não existe. Bloqueado esperando o usuário criar o projeto em supabase.com.
+Base greenfield criada e commitada (Next.js + TypeScript + Tailwind + Supabase), com fluxo de auth (login/signup/confirmação/logout) e rota protegida de exemplo já escritos e compilando. Nenhum projeto Supabase real ainda foi conectado — `.env.local` ainda não existe, então o fluxo de auth não foi testado de ponta a ponta. Bloqueado esperando o usuário criar o projeto em supabase.com.
 
 Repositório remoto criado no GitHub: https://github.com/daneybru-code/greenfield (público, branch `master` com tracking em `origin`).
 
@@ -23,14 +23,17 @@ Repositório remoto criado no GitHub: https://github.com/daneybru-code/greenfiel
 - [x] `CLAUDE.md` e `TASKS.md` criados para documentar decisões e handoff — 2026-09-16
 - [x] Supabase CLI inicializada localmente (`supabase/config.toml`) — 2026-09-16
 - [x] Repositório remoto criado no GitHub (público) e push do histórico — 2026-09-16
+- [x] Fluxo de auth escrito (login/signup por email+senha, confirmação de email, logout, rota `/protected` de exemplo) — 2026-09-16
+- [x] `proxy.ts` atualizado para redirecionar usuários não autenticados de `/protected` para `/login` — 2026-09-16
+- [x] Migration inicial `profiles` criada (tabela + RLS + trigger que sincroniza com `auth.users`) — 2026-09-16, ainda não aplicada em nenhum projeto real
 
 ## Próximos passos
 
 - [ ] Criar projeto no Supabase (Postgres, Auth, Storage) — o usuário faz isso manualmente em supabase.com (precisa de login/conta)
 - [ ] Preencher `.env.local` com URL/anon key/service role key do projeto criado
 - [ ] Rodar `npx supabase link --project-ref <ref>` para conectar a CLI local ao projeto remoto
-- [ ] Definir schema inicial do banco (tabelas, RLS policies) via migration em `supabase/migrations/`
-- [ ] Implementar fluxo de auth (login/signup/logout) usando Supabase Auth
+- [ ] Aplicar a migration `supabase/migrations/20260916221845_create_profiles.sql` no projeto real (`npx supabase db push` depois de linkado)
+- [ ] Testar o fluxo de auth (`/login`, `/protected`) contra o projeto real — em Supabase, checar em Authentication > URL Configuration se o "Site URL" e o redirect de confirmação de email apontam para `http://localhost:3000/auth/confirm` (dev) e o domínio de produção depois
 - [ ] Revisar o arquivo solto `prompt greemfield.txt` na raiz (vazio, não versionado — origem incerta, possivelmente sobra de ação no Explorer/OneDrive)
 - [ ] Definir convenção de branches/PRs para os próximos projetos que usarem esta base
 

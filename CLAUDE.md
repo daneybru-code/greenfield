@@ -25,3 +25,5 @@ Sempre leia `TASKS.md` primeiro para saber o que já foi feito e o que vem a seg
   - `src/lib/supabase/proxy.ts` + `src/proxy.ts` — refresh de sessão a cada request.
 - `SUPABASE_SERVICE_ROLE_KEY` só é usada em código server-side que precise ignorar RLS. Nunca expor no cliente.
 - Variáveis de ambiente reais vão em `.env.local` (git-ignorado); `.env.example` documenta as chaves esperadas e deve ser mantido atualizado quando novas variáveis forem adicionadas.
+- Migrations SQL ficam em `supabase/migrations/`. Toda tabela nova deve habilitar RLS e ter policies explícitas — não deixar tabela sem RLS em produção.
+- Fluxo de auth de referência: `src/app/login/` (páginas + server actions de login/signup/logout), `src/app/auth/confirm/route.ts` (confirmação de email), `src/app/protected/` (exemplo de rota autenticada). `src/proxy.ts` redireciona não-autenticados que tentem acessar `/protected`.

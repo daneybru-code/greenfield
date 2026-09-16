@@ -26,7 +26,15 @@ export async function updateSession(request: NextRequest) {
   );
 
   // Refreshes the auth token and must run before any Server Component reads it.
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user && request.nextUrl.pathname.startsWith("/protected")) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+    return NextResponse.redirect(url);
+  }
 
   return supabaseResponse;
 }
