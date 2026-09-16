@@ -4,7 +4,9 @@ Arquivo de controle do progresso deste projeto. Sempre consultar antes de contin
 
 ## Status atual
 
-Base greenfield criada e commitada (Next.js + TypeScript + Tailwind + Supabase). Nenhum projeto Supabase real ainda foi conectado — `.env.local` ainda não existe.
+Base greenfield criada e commitada (Next.js + TypeScript + Tailwind + Supabase). Supabase CLI inicializada localmente. Nenhum projeto Supabase real ainda foi conectado — `.env.local` ainda não existe. Bloqueado esperando o usuário criar o projeto em supabase.com.
+
+Decisão pendente do usuário: quando criar repositório remoto no GitHub (opções apresentadas: eu crio via CLI, ele publica pelo GitHub Desktop, ou deixa para depois — ainda sem resposta).
 
 ## Concluído
 
@@ -19,11 +21,14 @@ Base greenfield criada e commitada (Next.js + TypeScript + Tailwind + Supabase).
 - [x] Build, typecheck e lint validados sem erros — 2026-09-16
 - [x] Repositório git inicializado e commit inicial feito (branch `master`) — 2026-09-16
 - [x] `CLAUDE.md` e `TASKS.md` criados para documentar decisões e handoff — 2026-09-16
+- [x] Supabase CLI inicializada localmente (`supabase/config.toml`) — 2026-09-16
 
 ## Próximos passos
 
-- [ ] Criar projeto no Supabase (Postgres, Auth, Storage) e preencher `.env.local`
-- [ ] Definir schema inicial do banco (tabelas, RLS policies)
+- [ ] Criar projeto no Supabase (Postgres, Auth, Storage) — o usuário faz isso manualmente em supabase.com (precisa de login/conta)
+- [ ] Preencher `.env.local` com URL/anon key/service role key do projeto criado
+- [ ] Rodar `npx supabase link --project-ref <ref>` para conectar a CLI local ao projeto remoto
+- [ ] Definir schema inicial do banco (tabelas, RLS policies) via migration em `supabase/migrations/`
 - [ ] Implementar fluxo de auth (login/signup/logout) usando Supabase Auth
 - [ ] Decidir se haverá repositório remoto no GitHub e criar (usuário mencionou ter o GitHub Desktop instalado)
 - [ ] Revisar o arquivo solto `prompt greemfield.txt` na raiz (vazio, não versionado — origem incerta, possivelmente sobra de ação no Explorer/OneDrive)

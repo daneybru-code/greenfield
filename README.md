@@ -30,6 +30,15 @@ Abra [http://localhost:3000](http://localhost:3000).
 
 A `SUPABASE_SERVICE_ROLE_KEY` (em `.env.example`) só deve ser usada em código server-side que precise ignorar as políticas de RLS — nunca no cliente.
 
+## Supabase CLI (opcional, para dev local)
+
+O projeto já tem `supabase/config.toml` (`npx supabase init`). Para rodar Supabase localmente (Postgres, Auth, Storage em containers) é necessário Docker Desktop instalado:
+
+```bash
+npx supabase start   # sobe os containers locais
+npx supabase link --project-ref <ref>   # conecta ao projeto remoto, quando criado
+```
+
 ## Scripts
 
 ```bash
