@@ -4,9 +4,11 @@ Arquivo de controle do progresso deste projeto. Sempre consultar antes de contin
 
 ## Status atual
 
-Base greenfield criada e commitada (Next.js + TypeScript + Tailwind + Supabase), com fluxo de auth (login/signup/confirmação/logout) e rota protegida de exemplo já escritos e compilando. Nenhum projeto Supabase real ainda foi conectado — `.env.local` ainda não existe, então o fluxo de auth não foi testado de ponta a ponta. Bloqueado esperando o usuário criar o projeto em supabase.com.
+Base greenfield completa e funcional: Next.js + TypeScript + Tailwind + Supabase (auth, banco, storage) com um projeto Supabase real criado, linkado, com a migration aplicada e o fluxo de auth testado de ponta a ponta (signup → trigger cria profile → login/logout). Falta apenas confirmar visualmente no navegador (não foi possível testar a UI aqui porque o Claude in Chrome deste ambiente não alcança o `localhost` desta máquina) e ajustar o "Site URL" de produção quando o app for deployado.
 
 Repositório remoto criado no GitHub: https://github.com/daneybru-code/greenfield (público, branch `master` com tracking em `origin`).
+
+Projeto Supabase: `greenfield` (ref `ncjqqezzltyetltywbak`, região sa-east-1, org `daneybru@gmail.com's Org`). Credenciais em `.env.local` (não versionado).
 
 ## Concluído
 
@@ -27,14 +29,17 @@ Repositório remoto criado no GitHub: https://github.com/daneybru-code/greenfiel
 - [x] `proxy.ts` atualizado para redirecionar usuários não autenticados de `/protected` para `/login` — 2026-09-16
 - [x] Migration inicial `profiles` criada (tabela + RLS + trigger que sincroniza com `auth.users`) — 2026-09-16, ainda não aplicada em nenhum projeto real
 - [x] Supabase CLI instalada como devDependency do projeto (`npm run supabase -- <comando>`) — 2026-09-16
+- [x] Projeto Supabase real criado via CLI (`greenfield`, ref `ncjqqezzltyetltywbak`, sa-east-1) usando personal access token — 2026-09-16
+- [x] `.env.local` preenchido com URL/anon (publishable) key/service role (secret) key do projeto real — 2026-09-16
+- [x] CLI linkada ao projeto (`supabase link`) — 2026-09-16
+- [x] Migration `create_profiles` aplicada no projeto real via `supabase db push` — 2026-09-16
+- [x] Smoke test de ponta a ponta via script Node: signup real criou usuário no Supabase Auth e o trigger populou `public.profiles` corretamente; usuário de teste apagado depois — 2026-09-16
 
 ## Próximos passos
 
-- [ ] Criar projeto no Supabase (Postgres, Auth, Storage) — o usuário faz isso manualmente em supabase.com (precisa de login/conta)
-- [ ] Preencher `.env.local` com URL/anon key/service role key do projeto criado
-- [ ] Rodar `npx supabase link --project-ref <ref>` para conectar a CLI local ao projeto remoto
-- [ ] Aplicar a migration `supabase/migrations/20260916221845_create_profiles.sql` no projeto real (`npx supabase db push` depois de linkado)
-- [ ] Testar o fluxo de auth (`/login`, `/protected`) contra o projeto real — em Supabase, checar em Authentication > URL Configuration se o "Site URL" e o redirect de confirmação de email apontam para `http://localhost:3000/auth/confirm` (dev) e o domínio de produção depois
+- [ ] Testar visualmente `/login` e `/protected` num navegador de verdade (não foi possível pelo Claude in Chrome neste ambiente — ele não alcança `localhost:3000` desta máquina)
+- [ ] Em Authentication > URL Configuration no painel do Supabase, confirmar que o "Site URL" e o redirect de confirmação de email apontam para `http://localhost:3000/auth/confirm` em dev, e atualizar para o domínio de produção quando houver deploy
+- [ ] Considerar revogar o personal access token "greenfield" usado para criar o projeto (supabase.com/dashboard/account/tokens), se não for reutilizá-lo
 - [ ] Revisar o arquivo solto `prompt greemfield.txt` na raiz (vazio, não versionado — origem incerta, possivelmente sobra de ação no Explorer/OneDrive)
 - [ ] Definir convenção de branches/PRs para os próximos projetos que usarem esta base
 
