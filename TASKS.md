@@ -26,6 +26,7 @@ Repositório remoto criado no GitHub: https://github.com/daneybru-code/greenfiel
 - [x] Fluxo de auth escrito (login/signup por email+senha, confirmação de email, logout, rota `/protected` de exemplo) — 2026-09-16
 - [x] `proxy.ts` atualizado para redirecionar usuários não autenticados de `/protected` para `/login` — 2026-09-16
 - [x] Migration inicial `profiles` criada (tabela + RLS + trigger que sincroniza com `auth.users`) — 2026-09-16, ainda não aplicada em nenhum projeto real
+- [x] Supabase CLI instalada como devDependency do projeto (`npm run supabase -- <comando>`) — 2026-09-16
 
 ## Próximos passos
 

@@ -32,9 +32,10 @@ A `SUPABASE_SERVICE_ROLE_KEY` (em `.env.example`) só deve ser usada em código 
 
 ## Supabase CLI (opcional, para dev local)
 
-O projeto já tem `supabase/config.toml` (`npx supabase init`). Para rodar Supabase localmente (Postgres, Auth, Storage em containers) é necessário Docker Desktop instalado:
+A CLI está instalada como devDependency (`npm run supabase -- <comando>`, ou `npx supabase <comando>`). O projeto já tem `supabase/config.toml` (`npx supabase init`). Para rodar Supabase localmente (Postgres, Auth, Storage em containers) é necessário Docker Desktop instalado:
 
 ```bash
+npx supabase login   # requer TTY interativo, ou --token/SUPABASE_ACCESS_TOKEN
 npx supabase start   # sobe os containers locais
 npx supabase link --project-ref <ref>   # conecta ao projeto remoto, quando criado
 ```
