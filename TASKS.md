@@ -6,7 +6,7 @@ Arquivo de controle do progresso deste projeto. Sempre consultar antes de contin
 
 Base greenfield criada e commitada (Next.js + TypeScript + Tailwind + Supabase). Supabase CLI inicializada localmente. Nenhum projeto Supabase real ainda foi conectado — `.env.local` ainda não existe. Bloqueado esperando o usuário criar o projeto em supabase.com.
 
-Decisão pendente do usuário: quando criar repositório remoto no GitHub (opções apresentadas: eu crio via CLI, ele publica pelo GitHub Desktop, ou deixa para depois — ainda sem resposta).
+Repositório remoto criado no GitHub: https://github.com/daneybru-code/greenfield (público, branch `master` com tracking em `origin`).
 
 ## Concluído
 
@@ -22,6 +22,7 @@ Decisão pendente do usuário: quando criar repositório remoto no GitHub (opç�
 - [x] Repositório git inicializado e commit inicial feito (branch `master`) — 2026-09-16
 - [x] `CLAUDE.md` e `TASKS.md` criados para documentar decisões e handoff — 2026-09-16
 - [x] Supabase CLI inicializada localmente (`supabase/config.toml`) — 2026-09-16
+- [x] Repositório remoto criado no GitHub (público) e push do histórico — 2026-09-16
 
 ## Próximos passos
 
@@ -30,7 +31,6 @@ Decisão pendente do usuário: quando criar repositório remoto no GitHub (opç�
 - [ ] Rodar `npx supabase link --project-ref <ref>` para conectar a CLI local ao projeto remoto
 - [ ] Definir schema inicial do banco (tabelas, RLS policies) via migration em `supabase/migrations/`
 - [ ] Implementar fluxo de auth (login/signup/logout) usando Supabase Auth
-- [ ] Decidir se haverá repositório remoto no GitHub e criar (usuário mencionou ter o GitHub Desktop instalado)
 - [ ] Revisar o arquivo solto `prompt greemfield.txt` na raiz (vazio, não versionado — origem incerta, possivelmente sobra de ação no Explorer/OneDrive)
 - [ ] Definir convenção de branches/PRs para os próximos projetos que usarem esta base
 
